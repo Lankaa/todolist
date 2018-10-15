@@ -1,0 +1,88 @@
+.todo__item {
+    display: flex;
+    position: relative;
+    width: 100%;
+    list-style: none;
+    padding: 10px 0 10px 35px;
+    box-sizing: border-box;
+    background-color: #73c5f5c2;
+    cursor: pointer;
+}
+
+.todo__item:nth-child(odd) {
+    background: #8ad2fccb;
+}
+
+.todo__item:hover {
+    background: #51aae69d
+}
+
+.todo__item.completed {
+    text-decoration: line-through;
+    background: #2dabff;
+    color: white;
+}
+
+.todo__item.completed:before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+    margin-top: -3px;
+}
+
+.edit {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 100%;
+    cursor: pointer;
+    transition: background-color .5s;
+    font-size: 14px;
+    margin-right: 40px;
+}
+
+.edit:hover {
+    background-color: rgb(5, 168, 5);
+    color: white;
+    transition: .5s;
+}
+
+.remove {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 100%;
+    cursor: pointer;
+    transition: background-color .5s;
+    font-size: 14px;
+}
+
+.remove:hover {
+    background-color: red;
+    color: white;
+    transition: .5s;
+}
+
+.input__edit {
+    align-self: flex-start;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+    width: 100px;
+    height: 18px;
+    font-size: 14px;
+}
