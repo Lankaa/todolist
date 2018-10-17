@@ -1,3 +1,5 @@
 .todo__list {
+    height: 270px;
     width: 40%;
+    overflow-y: scroll;
 }

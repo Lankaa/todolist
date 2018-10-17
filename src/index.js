@@ -4,5 +4,12 @@ import './index.css';
 import TodoApp from './TodoApp';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
+import rootReducer from './reducers/rootReducer'
 
-ReactDOM.render(<TodoApp />, document.getElementById('root'));
+const store = createStore(rootReducer);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <TodoApp />
+  </Provider>
+, document.getElementById('root'));

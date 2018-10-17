@@ -1,65 +1,25 @@
 import React from 'react';
 import './TodoApp.css';
 import TodoList from './TodoList'
-import uuid from 'uuid' 
 import { connect } from 'react-redux'
+import { addToDo } from './actions/actions'
 
 class TodoApp extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			value: '',
-			items: [{id: uuid(), title: 'ARRR', completed: false}],
-		}
-
-	this.add = this.add.bind(this);
-	this.handleChange = this.handleChange.bind(this);
-	this.handleChildRemove = this.handleChildRemove.bind(this);
-	this.handleChildComplete = this.handleChildComplete.bind(this);
-	this.handleChildEdit = this.handleChildEdit.bind(this);
+	
+	state = {
+		value: ''
 	}
 
-	handleChange(e) {
+	handleChange = (e) => {
 		this.setState({value: e.target.value});
 	}
 
-	handleChildEdit(id, title) {
-		this.setState({
-			items: this.state.items.map(item => item.id === id
-				? ({...item, title})
-				: item
-			)
-		})
-	}
-
-	handleChildRemove(removeId) {
-		this.setState(prevState => {
-			const items = prevState.items.filter(item => item.id !== removeId);
-			return {items};
-		})
-	}
-
-	handleChildComplete(itemCurrent, e) {
-
-		if (e.target.tagName === 'LI') {
-
-			this.setState({
-				items: this.state.items.map(item => item.id === itemCurrent.id ? 
-					{title: itemCurrent.title, completed: !itemCurrent.completed, id: itemCurrent.id} : item
-				)
-			})
-		}
-	}
-
-	add(e) {
-		// let itemsLength = this.state.items.length;
-
+	add = (e) => {
 		if (this.state.value.length !== 0) {
-			this.setState({
-					value: '',
-					items: [ ...this.state.items, {id: uuid(), title: this.state.value, completed: false} ]
-				})
+			this.props.addTodo(this.state.value);
+			this.setState({value: ''});
 		}
+		else alert('You must write something at first')
 
 		e.preventDefault();
 	}
@@ -79,15 +39,16 @@ class TodoApp extends React.Component {
 					<button className='add_btn' onClick={this.add}>Add</button>
 				</div>
 				
-				 <TodoList 
-						 items={this.state.items} 
-						 remove={this.handleChildRemove} 
-						 edit={this.handleChildEdit}
-						 complete={this.handleChildComplete}
-				/> 
+				 <TodoList /> 
 			</div>
 		)
 	}
 }
 
-export default TodoApp;
+const mapDispatchToProps = dispatch => {
+    return {
+      addTodo: item => dispatch(addToDo(item))
+    };
+};
+
+export default connect(null, mapDispatchToProps)(TodoApp);
