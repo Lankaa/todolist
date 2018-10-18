@@ -2,8 +2,6 @@ import React from 'react';
 import './TodoList.css';
 import TodoItem from './TodoItem'
 import uuid from 'uuid'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
 
 class TodoList extends React.Component {
     render() {
@@ -17,19 +15,4 @@ class TodoList extends React.Component {
         )
     }
 }
-
-const mapStateToProps = state => {
-    return { items: state.todo.items };
-};
-
-TodoList.propTypes = {
-    items: PropTypes.arrayOf(
-        PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        title: PropTypes.string,
-        completed: PropTypes.bool
-        })
-    )
-  };
-
-export default connect(mapStateToProps)(TodoList);
+export default TodoList;

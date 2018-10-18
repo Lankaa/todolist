@@ -5,15 +5,17 @@
 }
 
 .header {
-    display: flex;
     width: 40%;
     background-color: #eee;
-    justify-content: center;
-    align-items: center;
     padding: 40px 20px;
     margin-left: 1em;
     margin-right: 1em;
     box-sizing: border-box
+}
+
+.add-wrapper {
+    display: flex;
+    margin-bottom: 10px;
 }
 
 .input {
@@ -44,4 +46,13 @@
     border: 0;
     background-color: rgb(2, 133, 209);
     transition: background-color .5s;
+}
+
+.filter-wrapper {
+    margin-top: 30px;
+}
+
+.filter {
+    margin-left: 10px;
+    cursor: pointer;
 }
